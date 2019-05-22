@@ -64,21 +64,6 @@ if (RUN){
   
   Anova(e3_glmer, type = "III")
   
-  ## bootstrap ses for figures
-  
-  newdat = data.frame(ProbeType = rep(levels(e1$ProbeType), each=6), Condition=rep(levels(e1$Condition), each = 2), SetSize=levels(e1$SetSize))
-  
-  e1_boot <- bootMer(e1_glmer, FUN=function(x) predict(x, newdat, re.form=NA),
-                     nsim=250)
-  
-  e2_boot <- bootMer(e2_glmer, FUN=function(x) predict(x, newdat, re.form=NA),
-                     nsim=250)
-  
-  newdat3 = data.frame(ProbeType = rep(levels(e3$ProbeType), each=6), Condition=rep(levels(e3$Condition), each = 2), SetSize=levels(e3$SetSize))
-  
-  e3_boot <- bootMer(e3_glmer, FUN=function(x) predict(x, newdat3, re.form=NA),
-                     nsim=250)
-  
   ## Joint analysis
   
   e1$exp = 1
